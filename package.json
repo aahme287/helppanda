@@ -4,7 +4,8 @@
   "private": true,
   "scripts": {
     "start": "node ./server.js",
-    "start:dev": "nodemon"
+    "start:dev": "nodemon",
+    "kill:3000": "npx kill-port 3000"
   },
   "dependencies": {
     "cookie-parser": "~1.4.4",

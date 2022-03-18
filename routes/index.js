@@ -1,5 +1,8 @@
-var express = require('express');
-var router = express.Router();
+let express = require('express');
+let router = express.Router();
+let incidentsRouter = require('./incidents')
+
+router.use('/incidents', incidentsRouter)
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
