@@ -24,11 +24,11 @@
                         <td class="text-center"><%= incidents[count].description %></td>
                         <td class="text-center"><%= incidents[count].tag %></td>
                         <td class="text-center">
-                            <a href="" class="btn btn-primary btn-sm">
+                            <a href="/incidents/update/<%= incidents[count]._id%>" class="btn btn-primary btn-sm">
                             <i class="fas fa-pencil-alt"></i></a>
                         </td>
                         <td class="text-center">
-                            <a href="" class="btn btn-danger btn-sm">
+                            <a href="/incidents/delete/<%= incidents[count]._id%>" class="btn btn-danger btn-sm">
                             <i class="fas fa-trash-alt"></i></a>
                         </td>
                     </tr>
