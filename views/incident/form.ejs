@@ -21,7 +21,7 @@
                 </div>
                 <br />
                 <div class="form-group">
-                    <label for="QtyTextField">Description</label>
+                    <label for="descriptionTextArea">Description</label>
                     <!-- <input 
                     type="text" 
                     class="form-control"
@@ -31,23 +31,22 @@
                     value="<%= incident.description %>"
                     required> -->
                     <textarea 
-                    id="w3review" 
+                    id="descriptionTextArea" 
                     class="form-control"
                     name="description" 
                     placeholder="Enter A Description For Incident"
                     value="<%= incident.description %>"
                     rows="4" 
                     cols="50"
-                    required>
-                    </textarea>
+                    required ></textarea>
                 </div>
                 <br />
                 <div class="form-group">
                     <label for="exampleFormControlSelect2">Select Priority</label>
-                    <select multiple class="form-control" id="exampleFormControlSelect2" name="priority">
-                        <option value="<%= incident.priority %>" >Low</option>
-                        <option value="<%= incident.priority %>" selected>Normal</option>
-                        <option value="<%= incident.priority %>">High</option>
+                    <select  class="form-control" id="exampleFormControlSelect2" name="priority">
+                        <option value="low" >Low</option>
+                        <option value="normal" selected>Normal</option>
+                        <option value="high">High</option>
                     </select>
                 </div>
 
@@ -57,7 +56,7 @@
                     <input type="text" class="form-control"
                     id="emailTextField"
                     placeholder="Enter Incident Tags"
-                    name="tag" 
+                    name="tags" 
                     value="<%= incident.tags %>"
                     >
                 </div>
