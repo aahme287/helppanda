@@ -79,7 +79,12 @@ hr {
 
 
 /*********** HOME SETTING ************/
-
+.home-logo {
+  width: 20rem;
+  height: 5rem;
+  margin: auto;
+  margin-bottom: 3rem;
+}
 
 
 /*********** FOOTER SETTING ************/
