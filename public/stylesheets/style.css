@@ -86,9 +86,7 @@ hr {
   margin-bottom: 3rem;
 }
 
-
 /*********** FOOTER SETTING ************/
-
 .list-unstyled{
   display: inline-flex;
   flex-wrap: wrap;
@@ -107,8 +105,6 @@ hr {
   border-bottom: 2px solid #63a4c9;
   color: #63a4c9;
 }
-
-
 
 .table {
   background-color: whitesmoke;
