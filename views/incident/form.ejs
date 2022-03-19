@@ -9,14 +9,14 @@
                 <div class="form-group">
                     <input type="hidden"
                         name="id"
-                        value=""
+                        value="<%= incident._id %>"
                     >
-                    <label for="itemTextField">Name</label>
+                    <label for="itemTextField">Title</label>
                     <input type="text" class="form-control"
                         id="nameTextField"
-                        placeholder="Enter Your Name"
-                        name="name" 
-                        value=""
+                        placeholder="Enter Your Title"
+                        name="title" 
+                        value="<%= incident.title %>"
                         required>
                 </div>
                 <br />
@@ -25,8 +25,8 @@
                     <input type="text" class="form-control"
                     id="numberTextField"
                     placeholder="Enter A Description For Incident"
-                    name="number" 
-                    value=""
+                    name="description" 
+                    value="<%= incident.description %>"
                     required>
                 </div>
                 <br />
@@ -35,8 +35,8 @@
                     <input type="text" class="form-control"
                     id="emailTextField"
                     placeholder="Enter Incident Tags"
-                    name="email" 
-                    value=""
+                    name="tag" 
+                    value="<%= incident.tag %>"
                     >
                 </div>
                 <br />              
@@ -46,12 +46,12 @@
                     Submit
                 </button>
                 
-                <a href="" class="btn btn-warning">
+                <a href="/incidents" class="btn btn-warning">
                     <i class="fas fa-undo"></i> 
                     Cancel
                 </a>
 
-                <a href="" class="btn btn-danger">
+                <a href="/incidents/delete/<%= incident._id %>" class="btn btn-danger">
                     Delete
                 </a>
             </form>
