@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="description" content="Help Panda" />
+  <meta name="keywords" content="HTML, CSS, JavaScript, Computer Engineer, Computer Engineering, CV, Resume, Atta, Jirofty, Atta Jirofty, React, Bootstrap" />
+  <meta name="author" content="" />
+
+  <link rel="icon" href="/images/favicon.svg" />
+  <link rel="apple-touch-icon" href="/images/favicon.svg" />
+
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#000000" />
+
+  <title><%= title %></title>
+
+  <link rel="stylesheet" href="/bootstrap/dist/css/bootstrap.min.css">
+  <link rel='stylesheet' href='/@fortawesome/fontawesome-free/css/all.min.css' />
+  <link rel="stylesheet" href="/stylesheets/style.css">
+</head>
+
+<body>
+
+  <!-- Main Nav bar  -->
+  <nav class="navbar navbar-expand-md bg-dark navbar-dark">
+
+    <!-- Brand/logo -->
+    <a class="navbar-brand mx-3" href="/">
+      <img src="/images/logo.png" alt="LOGO">
+    </a>
+
+    <!-- Responsive Menu Button -->
+    <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+    
+    <!-- Links -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <% if (title == "Home") { %>
+            <a class="nav-link active" href="/">
+        <% } else { %>
+            <a class="nav-link" href="/">
+        <% } %>            
+            <i class="fas fa-home"></i> Home </a>
+        </a>
+      </li>
+      <li class="nav-item">
+        <% if (title == "Incidents") { %>
+            <a class="nav-link active" href="/incidents">
+        <% } else { %>
+            <a class="nav-link" href="/incidents">
+        <% } %>            
+            <i class="fas fa-tasks"></i> Incidents </a>
+        </a>
+      </li> 
+    </ul>
+    </div>
+  </nav>
