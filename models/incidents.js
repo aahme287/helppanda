@@ -13,4 +13,4 @@ let incidentModel = mongoose.Schema(
     }
 );
 
-module.exports = mongoose.model('incidents', incidentModel);
+module.exports = mongoose.model('Incident', incidentModel);

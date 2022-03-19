@@ -1,3 +1,5 @@
+let Incident = require('../models/incidents')
+
 let incidents = [{
     id: 'abc123',
     title: 'Ticket 1',
@@ -26,26 +28,32 @@ module.exports = class IncidentController {
      * show list of incident
      */
     static list(req, res, next) {
+        Incident.find((err, incidents) => {
+            if(err) {
+                return next(err)
+            }
 
-        res.render('incident/list', {
-            title: 'Incident list',
-            incidents: incidents
+            res.render('incident/list', {
+                title: 'Incident list',
+                incidents
+            })
         })
+
+        // res.render('incident/list', {
+        //     title: 'Incident list',
+        //     incidents
+        // })
     }
 
     /**
      * render the create form
      */
     static renderCreateForm(req, res, next) {
+        let incident = Incident()
+
         res.render('incident/form', {
             title: 'Create new Incident',
-            incident: {
-                id: 'abc222',
-                title: '',
-                description: '',
-                priority: 0,
-                tag: []
-            }
+            incident
         })
     }
 
@@ -55,9 +63,15 @@ module.exports = class IncidentController {
     static renderUpdateForm(req, res, next) {
         let id = req.params.id
 
-        res.render('incident/form', {
-            title: 'Create new Incident',
-            incident: incidents[id]
+        Incident.findById(id, (err, incident) => {
+            if(err) {
+                return next(err)
+            }
+
+            res.render('incident/form', {
+                title: 'Create new Incident',
+                incident
+            })
         })
     }
 
@@ -65,20 +79,50 @@ module.exports = class IncidentController {
      * create operation
      */
     static create(req, res, next) {
-        res.send('create action')
+        let data = Incident(req.body)
+        
+        Incident.create(data, (err,incident) => {
+            if(err) {
+                return next(err)
+            }
+
+            res.redirect('/incidents')
+        })
     }
 
     /**
      * update operation
      */
     static update(req, res, next) {
-        res.send('update action')
+        let id = req.params.id
+        let incident = Incident({
+            _id: req.body.id,
+            title: req.body.title,
+            description: req.body.description,
+            tag: req.body.tag,
+            priority: req.body.priority
+        })
+        
+        Incident.updateOne({_id : id} , incident, (err) => {
+            if(err) {
+                return next(err)
+            }
+
+            res.redirect('/incidents')
+        })
     }
     
     /**
      * delete operation
      */
     static delete(req, res, next) {
-        res.send('delete incident')
+        let id = req.params.id
+        Incident.remove({_id: id}, (err) => {
+            if(err) {
+                return next(err)
+            }
+
+            res.redirect('/incidents')
+        })
     }
 }
