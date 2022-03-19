@@ -7,11 +7,22 @@ let session = require('express-session');
 let flash = require('connect-flash');
 let passport = require('passport');
 
+//Database setup
+let mongoose = require('mongoose');
+let dbURI = require('./config');
+
+// Connect to the Database
+mongoose.connect(dbURI.URI);
+
+let mongoDB = mongoose.connection;
+mongoDB.on('error', console.error.bind(console, 'Connection Error:'));
+mongoDB.once('open', ()=>{
+  console.log('Connected to MongoDB...');
+});
 
 // Get route modules
 let indexRouter = require('../routes/index');
 let incidentsRouter = require('../routes/incidents');
-
 
 let app = express();
 
