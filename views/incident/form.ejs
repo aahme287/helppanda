@@ -44,10 +44,10 @@
                 <br />
                 <div class="form-group">
                     <label for="exampleFormControlSelect2">Select Priority</label>
-                    <select multiple class="form-control" id="exampleFormControlSelect2">
-                        <option value="<%= incident.priority %>" id="optionLow">-1</option>
-                        <option value="<%= incident.priority %>" selected>0</option>
-                        <option value="<%= incident.priority %>">1</option>
+                    <select multiple class="form-control" id="exampleFormControlSelect2" name="priority">
+                        <option value="<%= incident.priority %>" >Low</option>
+                        <option value="<%= incident.priority %>" selected>Normal</option>
+                        <option value="<%= incident.priority %>">High</option>
                     </select>
                 </div>
 
@@ -58,7 +58,7 @@
                     id="emailTextField"
                     placeholder="Enter Incident Tags"
                     name="tag" 
-                    value="<%= incident.tag %>"
+                    value="<%= incident.tags %>"
                     >
                 </div>
                 <br />              

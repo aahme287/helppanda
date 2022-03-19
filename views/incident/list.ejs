@@ -13,6 +13,7 @@
                 <tr>
                     <th class="text-center">Title</th>
                     <th class="text-center">Description</th>
+                    <th class="text-center">Priority</th>
                     <th class="text-center">Tags</th>
                     <th class="text-center" colspan="2">Actions</th>
                 </tr>
@@ -22,7 +23,8 @@
                     <tr>
                         <td class="text-center"><%= incidents[count].title %></td>
                         <td class="text-center"><%= incidents[count].description %></td>
-                        <td class="text-center"><%= incidents[count].tag %></td>
+                        <td class="text-center"><%= incidents[count].priority %></td>
+                        <td class="text-center"><%= incidents[count].tags %></td>
                         <td class="text-center">
                             <a href="/incidents/update/<%= incidents[count]._id%>" class="btn btn-primary btn-sm">
                             <i class="fas fa-pencil-alt"></i></a>
