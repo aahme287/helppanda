@@ -1,1 +1,67 @@
-<h1><%= title %></h1>
+<%- include ../partials/header.ejs %>
+
+<!-- Content for the Add_Edit page -->
+<div class="container">
+    <div class="row">
+        <div class="offset-md-3 col-md-6">
+            <h1><%= title %></h1>
+
+            <form class="form" method="POST">
+                <div class="form-group">
+                    <input type="hidden"
+                        name="id"
+                        value=""
+                    >
+                    <label for="itemTextField">Name</label>
+                    <input type="text" class="form-control"
+                        id="nameTextField"
+                        placeholder="Enter Your Name"
+                        name="name" 
+                        value=""
+                        required>
+                </div>
+                <br />
+                <div class="form-group">
+                    <label for="QtyTextField">Description</label>
+                    <input type="number" class="form-control"
+                    id="numberTextField"
+                    placeholder="Enter A Description for Incident"
+                    name="number" 
+                    value=""
+                    required>
+                </div>
+                <br />
+                <div class="form-group">
+                    <label for="statusTextField">Tags</label>
+                    <input type="text" class="form-control"
+                    id="emailTextField"
+                    placeholder="Enter Incident Tags"
+                    name="email" 
+                    value=""
+                    >
+                </div>
+                <br />              
+
+
+                <button class="btn btn-primary" type="submit">
+                    <i class="fas fa-edit"></i> 
+                    Submit
+                </button>
+                
+                <a href="" class="btn btn-warning">
+                    <i class="fas fa-undo"></i> 
+                    Cancel
+                </a>
+
+                <a href="" class="btn btn-danger">
+                    Delete
+                </a>
+
+
+            </form>
+        </div>
+
+    </div>
+</div>
+
+<%- include ../partials/footer.ejs %>

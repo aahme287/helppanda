@@ -1,11 +1,3 @@
-/* 
-File Name : appclient.js
-Student's Name : Atta Jirofty
-Student ID : 301151759
-Date : 02-02-2022
-*/
-
-
 /*********** GLOBAL SETTING ************/
 html {
   overflow-x: hidden;
@@ -60,7 +52,7 @@ hr {
 }
 .navbar-brand img {
   width: 5rem;
-  height: 3rem;
+  height: 1rem;
 }
 
 .navbar-brand:hover{
