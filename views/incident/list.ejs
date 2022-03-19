@@ -25,12 +25,16 @@
                         <td class="text-center"><%= incidents[count].description %></td>
                         <td class="text-center"><%= incidents[count].priority %></td>
                         <td class="text-center"><%= incidents[count].tags %></td>
+                        
                         <td class="text-center">
                             <a href="/incidents/update/<%= incidents[count]._id%>" class="btn btn-primary btn-sm mx-3">
                             <i class="fas fa-pencil-alt"></i></a>
-                            <a href="/incidents/delete/<%= incidents[count]._id%>" class="btn btn-danger btn-sm mx-3" onclick="return confirm('Are you sure?')">
+                        </td>
+                        <td>
+                            <a href="/incidents/delete/<%= incidents[count]._id%>" class="btn btn-danger btn-sm mx-3">
                             <i class="fas fa-trash-alt"></i></a>
                         </td>
+                            
                     </tr>
                 <% } %>
             </table>
