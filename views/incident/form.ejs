@@ -22,13 +22,35 @@
                 <br />
                 <div class="form-group">
                     <label for="QtyTextField">Description</label>
-                    <input type="text" class="form-control"
+                    <!-- <input 
+                    type="text" 
+                    class="form-control"
                     id="numberTextField"
                     placeholder="Enter A Description For Incident"
                     name="description" 
                     value="<%= incident.description %>"
+                    required> -->
+                    <textarea 
+                    id="w3review" 
+                    class="form-control"
+                    name="description" 
+                    placeholder="Enter A Description For Incident"
+                    value="<%= incident.description %>"
+                    rows="4" 
+                    cols="50"
                     required>
+                    </textarea>
                 </div>
+                <br />
+                <div class="form-group">
+                    <label for="exampleFormControlSelect2">Select Priority</label>
+                    <select multiple class="form-control" id="exampleFormControlSelect2">
+                        <option value="<%= incident.priority %>" id="optionLow">-1</option>
+                        <option value="<%= incident.priority %>" selected>0</option>
+                        <option value="<%= incident.priority %>">1</option>
+                    </select>
+                </div>
+
                 <br />
                 <div class="form-group">
                     <label for="statusTextField">Tags</label>
