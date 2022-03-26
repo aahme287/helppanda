@@ -6,7 +6,7 @@ router.use('/incidents', incidentsRouter)
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('index', { title: 'HelpPanda Incident Manager' });
+  res.json({message: 'Please use API to access data'})
 });
 
 module.exports = router;

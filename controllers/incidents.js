@@ -1,21 +1,19 @@
 let Incident = require('../models/incidents')
 
 
-
 module.exports = class IncidentController {
     /**
      * show list of incident
      */
     static list(req, res, next) {
+        console.log('in list')
         Incident.find((err, incidents) => {
+            console.log('in find')
             if(err) {
                 return next(err)
             }
 
-            res.render('incident/list', {
-                title: 'Incident list',
-                incidents
-            })
+            res.status(200).json(incidents)
         })
     }
 
@@ -66,7 +64,7 @@ module.exports = class IncidentController {
                 return next(err)
             }
 
-            res.redirect('/incidents')
+            res.status(200).json(item);
         })
     }
 
@@ -88,7 +86,11 @@ module.exports = class IncidentController {
                 return next(err)
             }
 
-            res.redirect('/incidents')
+            return res.status(200).json({ 
+                  success: true, 
+                  message: 'Incdient updated successfully.'
+                }
+            );
         })
     }
     
@@ -102,7 +104,11 @@ module.exports = class IncidentController {
                 return next(err)
             }
 
-            res.redirect('/incidents')
+            // refresh the book list
+            return res.status(200).json({
+                success: true,
+                message: "Incident removed successfully."
+            });
         })
     }
 }
