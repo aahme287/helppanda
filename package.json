@@ -8,6 +8,7 @@
     "kill:3000": "npx kill-port 3000"
   },
   "dependencies": {
+    "cors": "^2.8.5",
     "debug": "~2.6.9",
     "ejs": "~2.6.1",
     "express": "~4.16.1",
