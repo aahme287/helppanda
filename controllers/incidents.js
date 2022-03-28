@@ -64,7 +64,7 @@ module.exports = class IncidentController {
                 return next(err)
             }
 
-            res.status(200).json(item);
+            res.status(200).json(incident);
         })
     }
 
