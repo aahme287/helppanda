@@ -74,7 +74,7 @@ module.exports = class IncidentController {
     static update(req, res, next) {
         let id = req.params.id
         let incident = Incident({
-            _id: req.body.id,
+            _id: id,
             title: req.body.title,
             description: req.body.description,
             tags: req.body.tags.split(",").map(word => word.trim()),
