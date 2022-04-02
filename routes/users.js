@@ -7,7 +7,8 @@ let jwt  = require('jsonwebtoken')
 router.get('/profile', authenticate, (req, res) => {
     res.json({
         success: true,
-        message: 'all good, access granted'
+        message: 'all good, access granted',
+        user: req.user
     })
 })
 

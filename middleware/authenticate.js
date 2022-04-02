@@ -1,4 +1,4 @@
-let jwt  = require('jsonwebtoken')
+let auth = require('../lib/auth')
 
 function authenticate(req, res, next) {
     // ie. Authorization: Bearer <token>
@@ -13,8 +13,9 @@ function authenticate(req, res, next) {
     const token = header.split(' ')[1]
 
     try {
-        const user = jwt.verify(token, process.env.JWT_TOKEN)
+        const user = auth.decodeToken(token)
         req.user = user
+        console.log('verified', user)
         next()
     } catch(err) {
         return res.status(403).json({

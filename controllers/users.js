@@ -1,6 +1,11 @@
-let jwt  = require('jsonwebtoken')
+let auth = require('../lib/auth')
 
 module.exports.signup = (req, res, next) => {
+    const email = req.body.email
+    if(!email) {
+        return next(new Error('Invalid requiest'))
+    }
+    
     if(req.body.email == 'nobody@domain.com') {
         return res.status(400).json( {
             success: false,
@@ -8,9 +13,15 @@ module.exports.signup = (req, res, next) => {
         })
     }
 
-    return res.json({
+    // after registration
+    const user = req.body
+
+    const token = auth.encodeToken(user)
+
+    res.json({
         success: true,
-        message: 'Signup successful.'
+        message: 'Signup successful.',
+        token
     })
 }
 
@@ -29,7 +40,8 @@ module.exports.signin = (req, res, next) => {
 
     const user = req.body
 
-    const token = jwt.sign(user, process.env.JWT_TOKEN)
+    const token = auth.encodeToken(user)
+
     res.json({
         success: true,
         token
