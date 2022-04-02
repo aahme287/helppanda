@@ -3,13 +3,11 @@
 /**
  * Module dependencies.
  */
-//  var dbConfig = require('./config/db');
-
+let config = require('./config/config')
 let app = require('./app');
 let debug = require('debug')('comp229003:server');
 let http = require('http');
 var dbConfig = require('./config/db');
-// var passportConfig = require('./config/passport');
 
 /**
  * Get port from environment and store in Express.
@@ -26,8 +24,6 @@ var server = http.createServer(app);
 /**
  * Listen on provided port, on all network interfaces.
  */
-//  let passport = passportConfig();
-
 server.listen(port);
 server.on('error', onError);
 server.on('listening', onListening);
@@ -35,7 +31,6 @@ server.on('listening', onListening);
 /**
  * Normalize a port into a number, string, or false.
  */
-
 function normalizePort(val) {
   var port = parseInt(val, 10);
 

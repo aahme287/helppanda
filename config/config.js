@@ -1,3 +1,5 @@
+require('dotenv').config()
+
 /**
  * Application wide configuration
  */

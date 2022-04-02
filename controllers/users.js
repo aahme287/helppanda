@@ -1,4 +1,4 @@
-
+let jwt  = require('jsonwebtoken')
 
 module.exports.signup = (req, res, next) => {
     if(req.body.email == 'nobody@domain.com') {
@@ -15,16 +15,24 @@ module.exports.signup = (req, res, next) => {
 }
 
 module.exports.signin = (req, res, next) => {
-    if(req.body.email == 'nobody@domain.com') {
+    const email = req.body.email
+    if(!email) {
+        return next(new Error('Invalid requiest'))
+    }
+
+    if(email == 'nobody@domain.com') {
         return res.status(400).json({
             sucess: false,
             message: 'Unable to signin'
         })
     }
 
-    return res.json({
+    const user = req.body
+
+    const token = jwt.sign(user, process.env.JWT_TOKEN)
+    res.json({
         success: true,
-        message: 'Signin success'
+        token
     })
 }
 
