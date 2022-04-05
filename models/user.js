@@ -4,37 +4,26 @@ let crypto = require('crypto');
 
 let UserSchema = mongoose.Schema(
     {
-     
-        
-        name: {
+        name: String,
+        email: {
             type: String,
-                required: 'Username is required'
-    },
-        username: {
-            type: String,
+            required: true,
             unique: true,
-            required: 'Username is required',
-            trim: true
+            // match: [/.+\@.+\..+/, "Please fill a valid e-mail address"]
         },
         password: {
             type: String,
+            required: true,
             validate: [(password) => {
                 return password && password.length > 6;
             }, 'Password should be longer']
         },
-        email: {
-            type: String,
-            match: [/.+\@.+\..+/, "Please fill a valid e-mail address"]
-        },
+        salt: String,
         role:String,
         address: String,
-        salt: String,
-        created: {
-            type: Date,
-            default: Date.now
-        }
     },
     {
+        timestamps: true,
         collection: "User"
     }
 );
@@ -47,11 +36,6 @@ UserSchema.pre('save', function(next) {
     next();
 });
 
-// Middleware post
-UserSchema.post('save', function(next){
-    console.log('The user "' + this.username +  '" details were saved.');
-});
-
 UserSchema.methods.hashPassword = function(password) {
     return crypto.pbkdf2Sync(password, this.salt, 10000, 64, 'sha512').toString('base64');
 };
@@ -60,4 +44,4 @@ UserSchema.methods.authenticate = function(password) {
     return this.password === this.hashPassword(password);
 };
 
-module.exports = mongoose.model('user', UserSchema);
+module.exports = mongoose.model('User', UserSchema);
