@@ -1,15 +1,14 @@
 let express = require('express');
 let router = express.Router();
 let controller = require('../controllers/incidents')
+let authenticate = require('../middleware/authenticate')
 
 router.get('/', controller.list)
 
-router.get('/create', controller.renderCreateForm)
-router.post('/create', controller.create)
+router.post('/create', authenticate, controller.create)
 
-router.get('/update/:id', controller.renderUpdateForm)
-router.post('/update/:id', controller.update)
+router.post('/update/:id', authenticate, controller.update)
 
-router.get('/delete/:id', controller.delete)
+router.get('/delete/:id', authenticate, controller.delete)
 
 module.exports = router
