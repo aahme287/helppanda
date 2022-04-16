@@ -1,4 +1,5 @@
-let Incident = require('../models/incidents')
+const Incident = require('../models/incidents')
+const common = require('../lib/common')
 
 
 module.exports = class IncidentController {
@@ -10,7 +11,7 @@ module.exports = class IncidentController {
         Incident.find((err, incidents) => {
             console.log('in find')
             if(err) {
-                return next(err)
+                return next(common.getErrorMessage(err))
             }
 
             res.status(200).json(incidents)
@@ -37,7 +38,7 @@ module.exports = class IncidentController {
 
         Incident.findById(id, (err, incident) => {
             if(err) {
-                return next(err)
+                return next(common.getErrorMessage(err))
             }
 
             res.render('incident/form', {
@@ -61,7 +62,7 @@ module.exports = class IncidentController {
         
         Incident.create(data, (err,incident) => {
             if(err) {
-                return next(err)
+                return next(common.getErrorMessage(err))
             }
 
             res.status(200).json(incident);
@@ -83,7 +84,7 @@ module.exports = class IncidentController {
         
         Incident.updateOne({_id : id} , incident, (err) => {
             if(err) {
-                return next(err)
+                return next(common.getErrorMessage(err))
             }
 
             return res.status(200).json({ 
@@ -101,7 +102,7 @@ module.exports = class IncidentController {
         let id = req.params.id
         Incident.remove({_id: id}, (err) => {
             if(err) {
-                return next(err)
+                return next(common.getErrorMessage(err))
             }
 
             // refresh the book list

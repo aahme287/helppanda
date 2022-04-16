@@ -17,6 +17,6 @@ router.post('/signup', controller.signup)
 router.post('/signin', controller.signin)
 
 // GET /signout
-router.get('/signout', controller.signout)
+// router.get('/signout', controller.signout)
 
 module.exports = router
