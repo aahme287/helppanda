@@ -16,6 +16,9 @@ router.post('/signup', controller.signup)
 // POST /signin
 router.post('/signin', controller.signin)
 
+// 
+router.put('/:id', controller.update)
+
 // GET /signout
 // router.get('/signout', controller.signout)
 

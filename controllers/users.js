@@ -10,6 +10,42 @@ function createPayload(user) {
     }
 }
 
+module.exports.update = (req, res, next) => {
+    const { name, email, password } = req.body
+    const id = req.params.id
+
+    if(!name || !email) {
+        return res.status(400).json({
+            success: false,
+            message: 'Name, Email are required'
+        })
+    }
+
+    const user = new User({
+        _id: id,
+        name,
+        email,
+        password
+    })
+    
+    User.updateOne({_id : id} , user, (err) => {
+        if(err) {
+            return res.status(400).json({ 
+                success: false, 
+                message: common.getErrorMessage(err)
+              }
+          );
+        }
+
+        return res.status(200).json({ 
+              success: true, 
+              message: 'User updated successfully.',
+              user
+            }
+        );
+    })
+}
+
 module.exports.signup = (req, res, next) => {
     const { name, email, password } = req.body
 
@@ -19,16 +55,6 @@ module.exports.signup = (req, res, next) => {
             message: 'Name, Email and Password are required'
         })
     }
-
-    if(req.body.email == 'nobody@domain.com') {
-        return res.status(400).json( {
-            success: false,
-            message: 'Unable to Signup'
-        })
-    }
-
-    const salt = auth.generateSalt()
-    const hashedPassword = auth.hashPassword(password, salt)
 
     // after registration
     const user = new User({
@@ -56,6 +82,7 @@ module.exports.signup = (req, res, next) => {
         res.json({
             success: true,
             message: 'Signup successful.',
+            user,
             token
         })
     })   
@@ -69,13 +96,6 @@ module.exports.signin = (req, res, next) => {
         return res.status(400).json({
             success: false,
             message: 'Both email and password are required'
-        })
-    }
-
-    if(email == 'nobody@domain.com') {
-        return res.status(400).json({
-            success: false,
-            message: 'Unable to signin'
         })
     }
 
@@ -108,6 +128,7 @@ module.exports.signin = (req, res, next) => {
         res.json({
             success: true,
             message: 'Login success',
+            user,
             token
         })
     });
