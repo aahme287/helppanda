@@ -52,8 +52,10 @@ module.exports = class IncidentController {
      * create operation
      */
     static create(req, res, next) {
+        let user = req.user
         let data = Incident({
             _id: req.body.id,
+            createdBy: user.email,
             title: req.body.title,
             description: req.body.description,
             tags: req.body.tags.split(",").map(word => word.trim()),
@@ -73,7 +75,18 @@ module.exports = class IncidentController {
      * update operation
      */
     static update(req, res, next) {
+        let user = req.user
         let id = req.params.id
+
+        if(req.body.createdBy != user.email) {
+            console.log('updating', user, req.body)
+            return res.status(403).json({ 
+                success: false, 
+                message: 'Can not update incident created by others'
+              }
+          );
+        }
+
         let incident = Incident({
             _id: id,
             title: req.body.title,
@@ -81,6 +94,9 @@ module.exports = class IncidentController {
             tags: req.body.tags.split(",").map(word => word.trim()),
             priority: req.body.priority
         })
+
+
+        console.log('updating: ', req.body)
         
         Incident.updateOne({_id : id} , incident, (err) => {
             if(err) {

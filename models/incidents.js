@@ -5,6 +5,8 @@ let incidentModel = mongoose.Schema(
         title: String,
         description: String,
         priority: String,
+        createdBy: String,
+        assignedTo: String,
         tags: []
     },
     {
